@@ -27,12 +27,11 @@ APP_SECRET    = os.environ.get("FB_APP_SECRET", "")
 DATE_PRESET   = "last_30d"
 
 # ── NGUONG QUYET DINH ────────────────────────────────────
-# Note: Meta API tra ve budget theo don vi VND (khong nhan them)
-# Nguong spend de quyet dinh (don vi: VND thuc)
-PAUSE_AD_MIN_SPEND         = 30_000     # VND - Can toi thieu de co du data
-PAUSE_AD_IF_RESULT_BELOW   = 1          # Ket qua < 1 -> PAUSE
-SCALE_CAMPAIGN_THRESHOLD   = 60         # Score >= nay -> scale up budget
-SCALE_BUDGET_PCT           = 30         # Tang bao nhieu % (30 = +30%)
+PAUSE_AD_MIN_SPEND         = 20_000     # VND - Giam xuong de bat ad xau nhanh hon
+PAUSE_AD_IF_RESULT_BELOW   = 1          
+PAUSE_CAMPAIGN_MIN_SPEND   = 150_000    # SOP: Chi > 50% gia SP (250k) ma ko don -> xem xet tat
+SCALE_CAMPAIGN_THRESHOLD   = 60         
+SCALE_BUDGET_PCT           = 20         # SOP: Tăng +20%/lan
 # ────────────────────────────────────────────────────────
 
 def sep(t="", w=68):
@@ -217,12 +216,12 @@ def build_plan(campaigns, adsets, ads, ad_insights, camp_insights):
                 "new_budget": new_budget,
                 "score":      sc,
             })
-        elif sc < 30 and spend > 1_000_000:
+        elif (sc < 30 and spend > PAUSE_CAMPAIGN_MIN_SPEND) or (msgs == 0 and spend > PAUSE_CAMPAIGN_MIN_SPEND):
             actions_plan.append({
                 "type":   "PAUSE_CAMPAIGN",
                 "id":     cid,
                 "name":   cname[:50],
-                "reason": f"Score {sc}/100 | Spend {spend:,.0f}d | Chi {msgs} msgs",
+                "reason": f"Diem thap ({sc}/100) | Tieu {spend:,.0f}d | 0 don hang",
                 "score":  sc,
             })
 
