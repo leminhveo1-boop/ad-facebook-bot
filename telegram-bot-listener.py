@@ -1,18 +1,22 @@
 import os, sys, requests, time, subprocess, json, threading
 from datetime import datetime, timedelta
 from flask import Flask
+from dotenv import load_dotenv
+
+# Load variables from .env
+load_dotenv()
 
 if sys.stdout and hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
 # ===== CAU HINH =====
-BOT_TOKEN = "8761610260:AAErFpY0B4LZSdLEPQqI-HCU3QflDxcW8SM"
-ALLOWED_CHAT_ID = "1966471122"
-SCRIPT_DIR = r"f:\Antigravity\brain2\vault\Projects\ad-facebook"
+BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+ALLOWED_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-FB_ACCESS_TOKEN = "EAAWretZAkV04BReellvzMSTRz5ZBroW6Q2rJjEyZA10yZCSu1LPogAbA3BuaF5u8veFWs1bA3yQt7QfGod8ZAwZCTWAWs1OTeQ5Qppfu0hsY8otoZBoVASF08k5LIdgxr7xvgZBEnQzFoWoMWZBG3ONyYVgeeeYwHkTpIQ1h3gmhyxrXgxnaZA4lOZCUrtjZAf7ZB"
-FB_AD_ACCOUNT_ID = "act_2087249431632156"
-FB_APP_ID = "1595918954813262"
+FB_ACCESS_TOKEN = os.getenv("FB_ACCESS_TOKEN")
+FB_AD_ACCOUNT_ID = os.getenv("FB_AD_ACCOUNT_ID")
+FB_APP_ID = os.getenv("FB_APP_ID")
 
 # Thoi gian check ROAS canh bao (giay) — mac dinh 4 tieng
 ALERT_INTERVAL = 4 * 60 * 60
@@ -279,9 +283,10 @@ def main():
     
     print("="*60)
     print(" TELEGRAM BOT LISTENER DANG CHAY...")
+    print(f" Chat ID Target: {ALLOWED_CHAT_ID}")
     print(" Lenh: /baocao, /baocaotuan, /checkroas, /menu")
     print(" Canh bao ROAS tu dong moi 4 tieng")
-    print(" Da tich hop Dummy Web Server cho Render")
+    print(" Da tich hop Dummy Web Server cho Cloud (Render/Railway)")
     print("="*60)
     
     offset = None

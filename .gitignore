@@ -6,3 +6,6 @@ logs/
 reports/
 *.bat
 *.vbs
+.env
+.antigravityignore
+*.log
