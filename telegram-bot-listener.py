@@ -242,6 +242,42 @@ def check_roas_alert():
         print(f"Loi check ROAS: {e}")
 
 # =====================================================
+# CHUC NANG 5: TOI UU (SOP)
+# =====================================================
+def cmd_optimize():
+    send_tg("⏳ Đang quét tài khoản và xây dựng kế hoạch tối ưu theo SOP...")
+    output = run_script("fb-optimizer.py")
+    
+    if "Khong co thay doi nao" in output:
+        send_tg("✅ <b>KẾT QUẢ QUÉT:</b>\n\nTài khoản đang rất ổn định, chưa cần tối ưu thêm.")
+    else:
+        # Lay phan ke hoach tu output
+        plan_part = ""
+        if "KE HOACH TOI UU — DRY RUN" in output:
+            plan_part = output.split("KE HOACH TOI UU — DRY RUN")[1].split("="*68)[0]
+        
+        msg = "📋 <b>KẾ HOẠCH TỐI ƯU (DỰ KIẾN)</b>\n"
+        msg += "━━━━━━━━━━━━━━━━━━━━\n"
+        msg += plan_part.strip()
+        msg += "\n━━━━━━━━━━━━━━━━━━━━\n"
+        msg += "💡 <i>Gõ <b>/confirm</b> để thực thi ngay các thay đổi trên.</i>"
+        send_tg(msg)
+
+def cmd_confirm_optimize():
+    send_tg("🚀 Đang thực thi tối ưu... Vui lòng đợi.")
+    output = run_script("fb-optimizer.py", ["--execute"])
+    
+    result_msg = "✅ <b>ĐÃ THỰC THI TỐI ƯU XONG!</b>\n"
+    result_msg += "━━━━━━━━━━━━━━━━━━━━\n"
+    if "KET QUA" in output:
+        result_part = output.split("KET QUA")[1]
+        result_msg += result_part.strip()
+    else:
+        result_msg += "Đã áp dụng các thay đổi thành công."
+    
+    send_tg(result_msg)
+
+# =====================================================
 # CHUC NANG 4: MENU LENH
 # =====================================================
 def cmd_menu():
@@ -252,6 +288,7 @@ def cmd_menu():
     msg += "📅 /baocao 14/05 — Báo cáo ngày cụ thể\n"
     msg += "📈 /baocaotuan — Báo cáo 7 ngày\n"
     msg += "🚨 /checkroas — Kiểm tra ROAS ngay\n"
+    msg += "🛠 /optimize — Lập kế hoạch tối ưu (SOP)\n"
     msg += "📋 /menu — Xem menu này\n"
     msg += "━━━━━━━━━━━━━━━━━━━━\n"
     msg += "💡 <i>Cảnh báo ROAS &lt; 3x tự động mỗi 4 tiếng</i>\n"
@@ -289,13 +326,13 @@ def main():
     print(" Da tich hop Dummy Web Server cho Cloud (Render/Railway)")
     print("="*60)
     
-    offset = None
+    offset = -1  # Bat dau bang tin nhan moi nhat
     last_alert_check = time.time()
     last_weekly = time.time()
     last_daily = time.time()
     
     while True:
-        # --- XU LY TIN NHAN ---
+        # print(f"[{time.strftime('%H:%M:%S')}] Dang poll tin nhan (offset={offset})...")
         updates = get_updates(offset)
         if updates and updates.get("ok"):
             for item in updates.get("result", []):
@@ -304,7 +341,9 @@ def main():
                 chat_id = str(msg.get("chat", {}).get("id", ""))
                 text = msg.get("text", "").strip().lower()
                 
-                if chat_id == ALLOWED_CHAT_ID:
+                print(f"[{time.strftime('%H:%M:%S')}] Update nhan duoc tu Chat ID: {chat_id}")
+                
+                if chat_id == str(ALLOWED_CHAT_ID):
                     print(f"[{time.strftime('%H:%M:%S')}] Nhan lenh: {text}")
                     
                     if (text.startswith("/baocao") or text.startswith("báo cáo") or text.startswith("baocao")) and "/baocaotuan" not in text and "bao cao tuan" not in text and "báo cáo tuần" not in text:
@@ -335,11 +374,19 @@ def main():
                         check_roas_alert()
                         send_tg("✅ Đã kiểm tra xong.")
                     
+                    elif text in ["/optimize", "tối ưu", "toi uu"]:
+                        cmd_optimize()
+                    
+                    elif text in ["/confirm", "xác nhận", "xac nhan"]:
+                        cmd_confirm_optimize()
+                    
                     elif text in ["/menu", "/help", "menu", "help"]:
                         cmd_menu()
                     
                     elif text in ["/start"]:
                         send_tg("👋 Chào anh! Gõ /menu để xem danh sách lệnh.")
+                else:
+                    print(f"[{time.strftime('%H:%M:%S')}] Bo qua tin nhan tu Chat ID la: {chat_id} (Target: {ALLOWED_CHAT_ID})")
         
         # --- CANH BAO ROAS TU DONG (moi 4 tieng, 8h-22h) ---
         now = time.time()
