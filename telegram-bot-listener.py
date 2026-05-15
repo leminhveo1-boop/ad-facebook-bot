@@ -302,10 +302,11 @@ def main():
                 if chat_id == ALLOWED_CHAT_ID:
                     print(f"[{time.strftime('%H:%M:%S')}] Nhan lenh: {text}")
                     
-                    if text.startswith("/baocao") and "/baocaotuan" not in text and "bao cao tuan" not in text and "báo cáo tuần" not in text:
-                        parts = text.split()
-                        if len(parts) > 1:
-                            raw_d = parts[1]
+                    if (text.startswith("/baocao") or text.startswith("báo cáo") or text.startswith("baocao")) and "/baocaotuan" not in text and "bao cao tuan" not in text and "báo cáo tuần" not in text:
+                        # Normalize command by removing the trigger word
+                        clean_text = text.replace("báo cáo", "").replace("/baocao", "").replace("baocao", "").strip()
+                        if clean_text:
+                            raw_d = clean_text.split()[0] # get the first word after command
                             if raw_d in ["homqua", "hôm", "yesterday", "qua"]:
                                 date_str = "yesterday"
                             else:
