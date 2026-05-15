@@ -1,0 +1,41 @@
+{
+  "created_at": "2026-05-14T10:19:00.213251",
+  "account": "act_2087249431632156",
+  "page_id": "337996149742830",
+  "mode": "execute",
+  "results": [
+    {
+      "campaign": "BOF_JeanNu_MSG_RTG_14.05",
+      "campaign_id": "120244866023250224",
+      "adset": "BOF_NhanTin14d_MSG_14.05",
+      "adset_id": "120244866025060224",
+      "budget": 150000,
+      "audience": "Inbox 14 ngay — nong nhat"
+    },
+    {
+      "campaign": "BOF_JeanNu_MSG_RTG_14.05",
+      "campaign_id": "120244866023250224",
+      "adset": "BOF_TuongTac14d_MSG_14.05",
+      "adset_id": "120244866026860224",
+      "budget": 100000,
+      "audience": "Tuong tac page 14 ngay"
+    },
+    {
+      "campaign": "MOF_JeanNu_MSG_LLA_14.05",
+      "campaign_id": "120244866030010224",
+      "adset": "MOF_LLA1pct_InboxMua_14.05",
+      "adset_id": "120244866033140224",
+      "budget": 200000,
+      "audience": "Lookalike 1% tu 4,700 khach da inbox mua"
+    },
+    {
+      "campaign": "MOF_JeanNu_MSG_LLA_14.05",
+      "campaign_id": "120244866030010224",
+      "adset": "MOF_LLA1pct_DS6500_14.05",
+      "adset_id": "120244866035010224",
+      "budget": 150000,
+      "audience": "Lookalike 1% tu danh sach 6,500 khach hang"
+    }
+  ],
+  "errors": []
+}

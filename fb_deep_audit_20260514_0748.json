@@ -1,0 +1,82 @@
+[
+  {
+    "campaign_id": "120244525762550224",
+    "campaign_name": "7.5 Test sp win",
+    "score": 55,
+    "score_label": "AVERAGE",
+    "metrics": {
+      "spend": 1601117.0,
+      "impressions": 15826,
+      "clicks": 402,
+      "ctr": 2.540124,
+      "cpm": 101170.036649,
+      "cpc": 3982.878109,
+      "frequency": 2.141543,
+      "messages": 26,
+      "leads": 14,
+      "roas": 3.872297,
+      "cost_per_message": 61581,
+      "cost_per_lead": 114365
+    }
+  },
+  {
+    "campaign_id": "120243626831310224",
+    "campaign_name": "Chiến dịch Lượt tương tác mới",
+    "score": 66,
+    "score_label": "GOOD",
+    "metrics": {
+      "spend": 3101243.0,
+      "impressions": 29107,
+      "clicks": 1592,
+      "ctr": 5.469475,
+      "cpm": 106546.294706,
+      "cpc": 1948.01696,
+      "frequency": 3.007232,
+      "messages": 61,
+      "leads": 44,
+      "roas": 9.146333,
+      "cost_per_message": 50840,
+      "cost_per_lead": 70482
+    }
+  },
+  {
+    "campaign_id": "120243211306590224",
+    "campaign_name": "retarget",
+    "score": 83,
+    "score_label": "EXCELLENT",
+    "metrics": {
+      "spend": 3120159.0,
+      "impressions": 31456,
+      "clicks": 2009,
+      "ctr": 6.386699,
+      "cpm": 99191.219481,
+      "cpc": 1553.090592,
+      "frequency": 1.922856,
+      "messages": 369,
+      "leads": 79,
+      "roas": 6.647097,
+      "cost_per_message": 8455,
+      "cost_per_lead": 39495
+    }
+  },
+  {
+    "campaign_id": "120243211194830224",
+    "campaign_name": "Tương Tác 14.4",
+    "score": 75,
+    "score_label": "GOOD",
+    "metrics": {
+      "spend": 3127239.0,
+      "impressions": 41987,
+      "clicks": 1456,
+      "ctr": 3.46774,
+      "cpm": 74481.12511,
+      "cpc": 2147.828984,
+      "frequency": 2.784838,
+      "messages": 197,
+      "leads": 42,
+      "roas": 5.944541,
+      "cost_per_message": 15874,
+      "cost_per_lead": 74458
+    }
+  }
+]

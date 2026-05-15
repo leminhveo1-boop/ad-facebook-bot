@@ -1,0 +1,72 @@
+{
+  "run_time": "2026-05-14T11:35:04.683936",
+  "account": {
+    "name": "TK02 - Quần Jean",
+    "status": "ACTIVE",
+    "currency": "VND",
+    "spent_30d": 15350933.0
+  },
+  "summary": {
+    "total_campaigns": 10,
+    "total_ads_with_spend": 18,
+    "spend_30d": 15350933.0,
+    "flags": [
+      "[FREQ-WARN] Tương Tác 14.4 - Freq=2.8 -> mo rong tep",
+      "[LOW-ROAS] Chiến dịch Lưu lượng truy cập  - Spend=630,943d, ROAS=0.00x",
+      "[FREQ-WARN] Chiến dịch Lượt tương tác mới - Freq=3.0 -> mo rong tep",
+      "[SCALE-NOW] Chiến dịch Lượt tương tác mới - ROAS=9.15x -> +20%"
+    ]
+  },
+  "top_3_ads": [
+    {
+      "id": "120243626831330224",
+      "name": "Quảng cáo Lượt tương tác mới",
+      "campaign": "Chiến dịch Lượt tương tác mới",
+      "spend": 461477.0,
+      "purchases": 0,
+      "msgs": 5,
+      "leads": 10,
+      "ctr": 15.662651,
+      "cpm": 99285.068847,
+      "freq": 1.912757,
+      "roas": 19.654284,
+      "cost_per_purchase": 999999,
+      "score": 65
+    },
+    {
+      "id": "120244525762540224",
+      "name": "Quảng cáo Lượt tương tác mới",
+      "campaign": "7.5 Test sp win",
+      "spend": 508100.0,
+      "purchases": 0,
+      "msgs": 10,
+      "leads": 7,
+      "ctr": 3.007659,
+      "cpm": 94918.737157,
+      "freq": 1.848412,
+      "roas": 8.069278,
+      "cost_per_purchase": 999999,
+      "score": 60
+    },
+    {
+      "id": "120243211306600224",
+      "name": "Quảng cáo Lượt tương tác mới",
+      "campaign": "retarget",
+      "spend": 3120509.0,
+      "purchases": 0,
+      "msgs": 369,
+      "leads": 79,
+      "ctr": 6.386496,
+      "cpm": 99199.192549,
+      "freq": 1.922917,
+      "roas": 6.646352,
+      "cost_per_purchase": 999999,
+      "score": 57
+    }
+  ],
+  "optimizations": [
+    "SCALED +20% campaign: retarget | 137,670 -> 165,204 VND | ROAS=6.65x (DAT >= 5.0x) -> +20%",
+    "SCALED +20% adset: Re-target | 218,400 -> 262,080 VND | ROAS=9.15x XUAT SAC"
+  ],
+  "errors": []
+}

@@ -1,0 +1,40 @@
+{
+  "timestamp": "2026-05-14T08:32:26.675982",
+  "account": "act_2087249431632156",
+  "plan": [
+    {
+      "type": "SCALE_CAMPAIGN",
+      "id": "120243211306590224",
+      "name": "retarget",
+      "reason": "Score 83/100 | CTR 6.39% | 369 msgs | ROAS 6.65x",
+      "old_budget": 105900,
+      "new_budget": 137670,
+      "score": 83
+    },
+    {
+      "type": "SCALE_CAMPAIGN",
+      "id": "120243211194830224",
+      "name": "Tương Tác 14.4",
+      "reason": "Score 75/100 | CTR 3.47% | 197 msgs | ROAS 5.94x",
+      "old_budget": 105900,
+      "new_budget": 137670,
+      "score": 75
+    },
+    {
+      "type": "SCALE_ADSET",
+      "id": "120243626831320224",
+      "name": "Re-target",
+      "camp_name": "Chiến dịch Lượt tương tác mới",
+      "reason": "Parent campaign score 66/100",
+      "old_budget": 168000,
+      "new_budget": 218400,
+      "score": 66
+    }
+  ],
+  "executed": [
+    "[OK] SCALED Campaign: retarget -> 1,376 VND",
+    "[OK] SCALED Campaign: Tương Tác 14.4 -> 1,376 VND",
+    "[OK] SCALED AdSet: Re-target -> 2,184 VND"
+  ],
+  "errors": []
+}
