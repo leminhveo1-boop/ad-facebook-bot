@@ -107,6 +107,11 @@ def main():
         insights = account.get_insights(fields=fields, params=params)
     except Exception as e:
         print(f"Loi khi call FB API: {e}")
+        error_msg = str(e)
+        if "Session has expired" in error_msg or "Error validating access token" in error_msg:
+            send_telegram_message("❌ <b>LỖI LẤY DỮ LIỆU FB ADS</b>\n\nToken Facebook đã hết hạn! Vui lòng tạo token mới và cập nhật lại hệ thống.")
+        else:
+            send_telegram_message(f"❌ <b>LỖI LẤY DỮ LIỆU FB ADS</b>\n\nChi tiết lỗi: {error_msg[:300]}")
         return
     
     if not insights:
